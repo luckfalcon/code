@@ -2,6 +2,7 @@
 #include<string>
 #include<map>
 #include<vector>
+#include"graph.h"
 //#include<algorithm>
 //#include<stack>
 // #include"bsearch_recursive.h"
@@ -13,60 +14,7 @@
 #include"string_KMP.h"
 #include"tree_map.h"
 using namespace std;
-//template<typename T>
-// struct t_node
-// {
-//     T data;
-//     t_node *next;
-//     t_node():next(nullptr){}
-// };
-// template<typename T>
-// class llist
-// {
-//     public:
-//     llist():head(new t_node<T>),cnt(0){}
-//     void create(t_node<T>**, const std::initializer_list<T>&,int,int);
-//     void create(const std::initializer_list<T>&ls)
-//     {
-//         t_node<T> *p = head;
-//         create(&p->next,ls,0,ls.size());
-//     }
-//     void print();
-//     bool empty(){return (head->next==nullptr);}
-//     private:
-//     t_node<T>*head;
-//     int cnt;
 
-// };
-// template<typename T>
-// void llist<T>::create(t_node<T>**t, const std::initializer_list<T>&ls,int left,int right)
-// {
-//     if(left==right)
-//     {
-//         return;
-//     }
-//     auto beg=ls.begin();
-//     *t=new t_node<T>;
-//     (*t)->data=*(beg+left);
-//     ++left;
-//     ++cnt;
-//     create(&(*t)->next,ls,left,right);
-// }
-// template<typename T>
-// void llist<T>::print()
-// {
-//     t_node<T>*p=head->next;
-//     if(!p)
-//     {
-//         std::cout<<"empty list"<<std::endl;
-//     }
-//     while(p)
-//     {
-//         //std::cout<<cnt<<std::endl;
-//         std::cout<<p->data<<std::endl;
-//         p=p->next;
-//     }
-// }
 int main()
 {
 
@@ -77,9 +25,37 @@ int main()
     // merge_sort<int>(arr);
     // print_arr<int>(arr);
     //cout<<bsearch_recursive(arr,8)<<endl;
-   
-    
-   
+    //vector<int>v={1,2,3,4,5,6};
+   //MGraph<int>g;
+   //g.creategraph({1,2,3,4,5},{{1,2,3},{4,5,6},{7,8,9},{10,11,12}},MGraph<int>::Undirected);
+   //g.creategraph();
 
+    vector<int>input;
+    vector<vector<int>>matrix;
+    string s;
+    while((getline(cin,s))&&s!="")
+    {
+        for(int i=0;i<s.size();++i)
+        {
+            int num=0;
+            while(s[i]!=' '&&s[i]!='\0')
+            {
+                num=num*10+s[i]-'0';//从高位向低位逐个转换
+                ++i;
+            }
+            if(i>0&&s[i-1]!=' ')
+                input.push_back(num);
+        }
+        matrix.push_back(input);
+        input.clear();
+    }
+    for (auto &line : matrix)
+    {
+        for (auto &e : line)
+            cout << e << " ";
+        cout << endl;
+    }
+        
+    //system("pause");
     return 0;
 }
